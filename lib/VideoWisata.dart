@@ -13,7 +13,14 @@ class _VideoWisata extends State<VideoWisata> {
   Widget build(BuildContext context) {
     return YoutubePlayer(
       context: context,
+      autoPlay: true,
+      showThumbnail: true,
+
+      //Quality LOWEST, LOW, MEDIUM, HIGH, HD, FHD
       quality: YoutubeQuality.MEDIUM,
+
+      // didapatkan dari
+      // http://www.youtube.com/watch?v=KJy44mAbA4M
       source: "KJy44mAbA4M",
     );
   }

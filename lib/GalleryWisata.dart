@@ -26,11 +26,14 @@ class _GalleryWisataState extends State<GalleryWisata> {
       body: GridView.builder(
         itemCount: photo.length ?? 0,
         gridDelegate:
-            new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+        SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (BuildContext ctx, int index) {
           return Card(
             child: GridTile(
-              child: Image.network(photo[index], fit: BoxFit.fill,),
+              child: Image.network(
+                photo[index],
+                fit: BoxFit.fill,
+              ),
             ),
           );
         },

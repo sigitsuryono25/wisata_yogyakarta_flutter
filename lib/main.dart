@@ -1,7 +1,8 @@
+import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:wisata_yogyakarta/Dashboard.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wisata_yogyakarta/GalleryWisata.dart';
 import 'package:wisata_yogyakarta/LokasiWisata.dart';
 import 'package:wisata_yogyakarta/PortalBerita.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
       home: MyHomePage(title: 'Dashboard'),
     );
@@ -51,21 +52,242 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // Image list
+  static final List imgList = [
+    NetworkImage(
+        "https://www.pikniek.com/wp-content/uploads/2017/10/000015-00_wisata-candi-prambanan_kompleks-candi_800x450_cc0-min.jpg"),
+    NetworkImage(
+        "http://spotunik.com/assets/images/spots/tugu-jogja-20160620160402.jpg"),
+    NetworkImage(
+        "http://cdn-2.tstatic.net/tribunnews/foto/bank/images/pemandangan-candi-ijo2_20150519_174558.jpg"),
+    NetworkImage(
+        "https://www.yogyes.com/en/yogyakarta-tourism-object/candi/ijo/1.jpg")
+  ];
+  var photo = [
+    "https://cdns.klimg.com/merdeka.com/i/w/news/2018/05/21/978617/content_images/670x335/20180521113239-2-trans-studio-mini-maguwo-001-tantri-setyorini.jpg",
+    "https://cdns.klimg.com/merdeka.com/i/w/news/2018/05/21/978617/content_images/670x335/20180521113239-1-the-world-landmarks-merapi-park-001-tantri-setyorini.jpg",
+    "https://cdns.klimg.com/merdeka.com/i/w/news/2018/05/21/978617/content_images/670x335/20180521113239-3-pantai-nglambor-001-tantri-setyorini.jpg",
+    "https://cdns.klimg.com/merdeka.com/i/w/news/2018/05/21/978617/content_images/670x335/20180521113240-4-jogja-bay-waterpark-001-tantri-setyorini.jpg",
+    "https://cdns.klimg.com/merdeka.com/i/w/news/2018/05/21/978617/content_images/670x335/20180521113240-5-kebun-teh-nglinggo-001-tantri-setyorini.jpg"
+  ];
+
   @override
   Widget build(BuildContext context) {
+    final MediaQueryData _mediaQueryData = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-                "The Special Region of Yogyakarta (Indonesian: Daerah Istimewa Yogyakarta, pronounced /ˌjɒɡjəˈkɑːrtə/) is a provincial-level autonomous region of Indonesia in the southern Java.[5] "
-                "It is bordered by the Indian Ocean to the south, as well as sharing all the land borders to the province of Central Java. Ruled by the Yogyakarta Sultanate, the region is the only officially recognised monarchy within the government of Indonesia. "
-                "The city of Yogyakarta is the capital and the economic center of the region.The Yogyakarta Sultanate has been established since 1755 and provided an unwavering support for Indonesia's independence during the Indonesian National Revolution (1945–1949). "
-                "As a first-level division in Indonesia, Yogyakarta is governed by Sultan Hamengkubuwono as the governor and Prince Paku Alam as the vice governor. With a land area of 3,185.8 km², it is the second-smallest province of Indonesia after Jakarta.[6]"),
+            SizedBox(
+              width: _mediaQueryData.size.width,
+              height: 250,
+              child: Carousel(
+                images: imgList,
+                dotBgColor: Colors.transparent,
+                dotPosition: DotPosition.bottomLeft,
+                boxFit: BoxFit.cover,
+                showIndicator: true,
+                dotSize: 5,
+                autoplay: true,
+                autoplayDuration: Duration(milliseconds: 3000),
+                onImageTap: (index) {
+                  print(imgList[index]);
+                },
+              ),
+            ),
+//            Text(
+//                "The Special Region of Yogyakarta (Indonesian: Daerah Istimewa Yogyakarta, pronounced /ˌjɒɡjəˈkɑːrtə/) is a provincial-level autonomous region of Indonesia in the southern Java.[5] "
+//                "It is bordered by the Indian Ocean to the south, as well as sharing all the land borders to the province of Central Java. Ruled by the Yogyakarta Sultanate, the region is the only officially recognised monarchy within the government of Indonesia. "
+//                "The city of Yogyakarta is the capital and the economic center of the region.The Yogyakarta Sultanate has been established since 1755 and provided an unwavering support for Indonesia's independence during the Indonesian National Revolution (1945–1949). "
+//                "As a first-level division in Indonesia, Yogyakarta is governed by Sultan Hamengkubuwono as the governor and Prince Paku Alam as the vice governor. With a land area of 3,185.8 km², it is the second-smallest province of Indonesia after Jakarta.[6]"),
+            Container(
+              padding: EdgeInsetsDirectional.only(top: 20),
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: GestureDetector(
+                          child: Column(
+                            children: <Widget>[
+                              SvgPicture.asset(
+                                "graphics/home.svg",
+                                width: 64,
+                                height: 64,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "Dashboard",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          ),
+                          onTap: () {
+                            print("Dashboard");
+                          },
+                        ),
+                      ),
+                      Expanded(
+                        child: GestureDetector(
+                          child: Column(
+                            children: <Widget>[
+                              SvgPicture.asset(
+                                "graphics/rss.svg",
+                                height: 64,
+                                width: 64,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "Portal Wisata",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PortalBerita()));
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: GestureDetector(
+                          child: Column(
+                            children: <Widget>[
+                              SvgPicture.asset(
+                                "graphics/map.svg",
+                                height: 64,
+                                width: 64,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "Lokasi Wisata",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              )
+                            ],
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LokasiWisata()));
+                          },
+                        ),
+                      ),
+                      Expanded(
+                        child: GestureDetector(
+                          child: Column(
+                            children: <Widget>[
+                              SvgPicture.asset(
+                                "graphics/video-player.svg",
+                                height: 64,
+                                width: 64,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "Video Wisata",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              )
+                            ],
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => VideoWisata()));
+                          },
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: GestureDetector(
+                          child: Column(
+                            children: <Widget>[
+                              SvgPicture.asset(
+                                "graphics/gallery.svg",
+                                height: 64,
+                                width: 64,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "Galeri Wisata",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              )
+                            ],
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => GalleryWisata()));
+                          },
+                        ),
+                      ),
+                      Expanded(
+                        child: GestureDetector(
+                          child: Column(
+                            children: <Widget>[
+                              SvgPicture.asset(
+                                "graphics/complain.svg",
+                                height: 64,
+                                width: 64,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "About Us",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              )
+                            ],
+                          ),
+                          onTap: () {},
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            )
           ],
         ),
       ),
