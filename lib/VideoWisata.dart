@@ -12,7 +12,6 @@ class _VideoWisata extends State<VideoWisata> {
   @override
   Widget build(BuildContext context) {
     return YoutubePlayer(
-      context: context,
       autoPlay: true,
       showThumbnail: true,
 
@@ -22,6 +21,7 @@ class _VideoWisata extends State<VideoWisata> {
       // didapatkan dari
       // http://www.youtube.com/watch?v=KJy44mAbA4M
       source: "KJy44mAbA4M",
+      context: context,
     );
   }
 }

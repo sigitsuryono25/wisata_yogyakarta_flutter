@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -63,13 +64,6 @@ class _MyHomePageState extends State<MyHomePage> {
     NetworkImage(
         "https://www.yogyes.com/en/yogyakarta-tourism-object/candi/ijo/1.jpg")
   ];
-  var photo = [
-    "https://cdns.klimg.com/merdeka.com/i/w/news/2018/05/21/978617/content_images/670x335/20180521113239-2-trans-studio-mini-maguwo-001-tantri-setyorini.jpg",
-    "https://cdns.klimg.com/merdeka.com/i/w/news/2018/05/21/978617/content_images/670x335/20180521113239-1-the-world-landmarks-merapi-park-001-tantri-setyorini.jpg",
-    "https://cdns.klimg.com/merdeka.com/i/w/news/2018/05/21/978617/content_images/670x335/20180521113239-3-pantai-nglambor-001-tantri-setyorini.jpg",
-    "https://cdns.klimg.com/merdeka.com/i/w/news/2018/05/21/978617/content_images/670x335/20180521113240-4-jogja-bay-waterpark-001-tantri-setyorini.jpg",
-    "https://cdns.klimg.com/merdeka.com/i/w/news/2018/05/21/978617/content_images/670x335/20180521113240-5-kebun-teh-nglinggo-001-tantri-setyorini.jpg"
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -98,11 +92,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               ),
             ),
-//            Text(
-//                "The Special Region of Yogyakarta (Indonesian: Daerah Istimewa Yogyakarta, pronounced /ˌjɒɡjəˈkɑːrtə/) is a provincial-level autonomous region of Indonesia in the southern Java.[5] "
-//                "It is bordered by the Indian Ocean to the south, as well as sharing all the land borders to the province of Central Java. Ruled by the Yogyakarta Sultanate, the region is the only officially recognised monarchy within the government of Indonesia. "
-//                "The city of Yogyakarta is the capital and the economic center of the region.The Yogyakarta Sultanate has been established since 1755 and provided an unwavering support for Indonesia's independence during the Indonesian National Revolution (1945–1949). "
-//                "As a first-level division in Indonesia, Yogyakarta is governed by Sultan Hamengkubuwono as the governor and Prince Paku Alam as the vice governor. With a land area of 3,185.8 km², it is the second-smallest province of Indonesia after Jakarta.[6]"),
             Container(
               padding: EdgeInsetsDirectional.only(top: 20),
               child: Column(
@@ -115,8 +104,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             children: <Widget>[
                               SvgPicture.asset(
                                 "graphics/home.svg",
-                                width: 64,
-                                height: 64,
+                                width: 100,
+                                height: 100,
                               ),
                               SizedBox(
                                 height: 10,
@@ -156,9 +145,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           onTap: () {
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => PortalBerita()));
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => PortalBerita(),
+                              ),
+                            );
                           },
                         ),
                       ),
@@ -277,7 +268,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black),
-                              )
+                              ),
                             ],
                           ),
                           onTap: () {},
