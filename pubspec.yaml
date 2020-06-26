@@ -23,24 +23,13 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-
   ##Carousel Slider
   carousel_pro: ^1.0.0
-
-  ## Web View
   webview_flutter: ^0.3.15+1
-
-  ## Progress Dialog
   modal_progress_hud: ^0.1.3
-
-  ## For Google Maps
   google_maps_flutter: ^0.5.21+12
-
-  ## For Youtube Player View
-  youtube_player: ^3.5.0
-
-  ## Flutter SVG handler
-  flutter_svg: ^0.15.0
+  youtube_player_flutter: 7.0.0+6
+  flutter_svg: ^0.18.0
 
 dev_dependencies:
   flutter_test:

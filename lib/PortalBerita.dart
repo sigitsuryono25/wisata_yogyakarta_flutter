@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 void main() => runApp(MaterialApp(
@@ -15,8 +16,6 @@ class PortalBerita extends StatefulWidget {
 
 class _PortalBeritaState extends State<PortalBerita> {
   GlobalObjectKey keys;
-  double height;
-  double width;
 
   @override
   Widget build(BuildContext context) {
@@ -25,27 +24,14 @@ class _PortalBeritaState extends State<PortalBerita> {
         title: Text("Portal Berita"),
       ),
       body: Container(
-        child: Stack(
-          children: <Widget>[
-            WebView(
-              initialUrl: "https://jogjaprov.go.id/home",
-              javascriptMode: JavascriptMode.unrestricted,
-              onPageFinished: (url) {
-                setState(() {
-                  height = 0;
-                  width = 0;
-                });
-              },
-            ),
-            Align(
-              child: SizedBox(
-                width: width,
-                height: height,
-                child: CircularProgressIndicator(),
-              ),
-              alignment: Alignment.center,
-            ),
-          ],
+        child: ModalProgressHUD(
+          inAsyncCall: false,
+          opacity: 1.0,
+          progressIndicator: CircularProgressIndicator(),
+          child: WebView(
+            initialUrl: "https://jogjaprov.go.id/home",
+            javascriptMode: JavascriptMode.unrestricted,
+          ),
         ),
       ),
     );

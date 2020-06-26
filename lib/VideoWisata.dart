@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:youtube_player/youtube_player.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VideoWisata extends StatefulWidget {
   @override
@@ -9,19 +9,18 @@ class VideoWisata extends StatefulWidget {
 }
 
 class _VideoWisata extends State<VideoWisata> {
+  YoutubePlayerController _controller = YoutubePlayerController(
+    initialVideoId: 'WdNCl4Cx8iU',
+    flags: YoutubePlayerFlags(
+      autoPlay: true,
+      mute: true,
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     return YoutubePlayer(
-      autoPlay: true,
-      showThumbnail: true,
-
-      //Quality LOWEST, LOW, MEDIUM, HIGH, HD, FHD
-      quality: YoutubeQuality.MEDIUM,
-
-      // didapatkan dari
-      // http://www.youtube.com/watch?v=KJy44mAbA4M
-      source: "KJy44mAbA4M",
-      context: context,
+      controller: _controller,
     );
   }
 }

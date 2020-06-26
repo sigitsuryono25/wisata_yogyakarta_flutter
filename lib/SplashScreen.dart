@@ -32,7 +32,9 @@ class _SplashScreenBodyState extends State<_SplashScreenBody> {
     return Scaffold(
       body: Center(
           child: Image(
-        image: AssetImage("graphics/splash.jpg"),
+        image: AssetImage("graphics/splashsc.png"),
+        width: 75,
+        height: 75,
       )),
     );
   }

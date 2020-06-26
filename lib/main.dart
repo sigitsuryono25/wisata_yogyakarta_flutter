@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Dashboard'),
     );
@@ -104,8 +104,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             children: <Widget>[
                               SvgPicture.asset(
                                 "graphics/home.svg",
-                                width: 100,
-                                height: 100,
+                                width: 64,
+                                height: 64,
                               ),
                               SizedBox(
                                 height: 10,
